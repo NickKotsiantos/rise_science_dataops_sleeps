@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Rise Science DataOps Sleeps to Explore</h1>
+
+
+
+<h3>Enter the player's first and last name to view patterns</h3>
+
+<form method='POST' action="{% url 'home' %}">
+    {% csrf_token %}
+
+    {% if message %}
+    <h6 style="color:red;">{{ message }}</h6>
+    {% endif %}
+
+    First Name:
+    <br>
+    <input type="text" name="first_name">
+    <br>
+    Last Name:
+    <br>
+    <input type="text" name="last_name">
+    <br>
+    <br> 
+    <input class="btn btn-primary" type="submit" value="submit">
+</form>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Pattern</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for element in data %}
+            <tr class="{{ element.3 }}">
+                <td>{{ element.0 }}</td>
+                <td>{{ element.1 }}</td>
+                <td>{{ element.2 }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
