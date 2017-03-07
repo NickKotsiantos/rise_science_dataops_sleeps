@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath rise-science-dataops-sleeps sleep_data_ops.wsgi --log-file -
+web: gunicorn --pythonpath rise-science-dataops-sleeps sleep_data_ops.deploy --log-file -
